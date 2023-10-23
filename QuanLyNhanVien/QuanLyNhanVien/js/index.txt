@@ -1,0 +1,94 @@
+var tRString = `<tr id="myTr">
+    <td><span>${nVien.taiKhoan}</span></td>
+    <td><span>${nVien.name}</span></td>
+    <td><span>${nVien.email}</span></td>
+    <td><span>${nVien.ngayLam}</span></td>
+    <td><span>${nVien.chucVu}</span></td>
+    <td><span>${nVien.tinhTongLuong()}</span></td>
+    <td><span>${nVien.xepLoai()}</span></td>
+    <td>
+    <button class="btn btn-danger" onclick ="xoaNhanVien('${nVien.taiKhoan}')">Xoá</button>
+    <button class="btn btn-warning" onclick ="suaNhanVien('${nVien.taiKhoan}')">Sửa</button>
+    </td>
+    </tr>`
+
+//TÌM NHÂN VIÊN THEO LOẠI(xuất săc, giỏi, khá...) VÀ HIỂN THỊ
+var btnTimNV = domID('btnTimNV').onclick = function(){
+  //B1: dom tới input lấy giá trị người dùng
+  var tim, filter, tr, td, txtValue ;
+  tim = domID('searchName');
+  filter = tim.value.toUpperCase();
+  tr = domID('myTr');
+  td = tr.getElementsByTagName("td");
+  for(i=0; i< td.length; i++){
+    //Lấy phần tử td đầu tiên trong phần tử tr hiện tại.
+    span = td[i].getElementsByTagName("span")[0];
+    
+    //toUpperCase: khi nhập chữ hoa hoặc thường sẽ gợi ý các từ có chữ a dù ở đầu hoặc cuối.
+    //Sử dụng phương thức indexOf() của lớp String để tìm vị trí của chuỗi filter trong giá trị của biến txtValue đã chuyển đổi.
+    //So sánh vị trí tìm được với giá trị -1.
+    if (span) {
+      //Lấy giá trị văn bản của phần tử td hiện tại.
+      txtValue = span.textContent || span.innerText;
+      if(txtValue.toUpperCase().indexOf(filter) > -1){
+            td[i].style.display = "";
+        } else {
+          td[i].style.display = "none";
+        }
+  }
+}
+}
+
+var btnTimNV = domID('btnTimNV').onclick = function(){
+  //B1: dom tới input lấy giá trị người dùng
+  var tim, filter, table, td, span, txtValue ;
+  tim = domID('searchName');
+  filter = tim.value.toUpperCase();
+  table = domID('myTable');
+  tr = table.getElementById('myTr');
+  td = tr.getElementsByTagName("td");
+  for(i=0; i< td.length; i++){
+    //Lấy phần tử td đầu tiên trong phần tử tr hiện tại.
+    span = td[i].getElementsByTagName("span")[0];
+    
+    //toUpperCase: khi nhập chữ hoa hoặc thường sẽ gợi ý các từ có chữ a dù ở đầu hoặc cuối.
+    //Sử dụng phương thức indexOf() của lớp String để tìm vị trí của chuỗi filter trong giá trị của biến txtValue đã chuyển đổi.
+    //So sánh vị trí tìm được với giá trị -1.
+    if(span) {
+      //Lấy giá trị văn bản của phần tử td hiện tại.
+      txtValue = span.textContent || span.innerText;
+      if(txtValue.toUpperCase().indexOf(filter) > -1){
+            td[i].style.display = "";
+        } else {
+          td[i].style.display = "none";
+        }
+  }
+}
+}
+
+// //B2: Tạo 1 mảng tạm để gắn kết quả tìm kiếm
+  // var mangTimKiem = [nhanVien];
+  // //B3: Tạo vòng lặp for lặp qua từng phần tử
+  // for(i=0; i< mangTimKiem.length; i++){
+  //   var nVien = mangTimKiem[i];
+  //   // var loaiNhanVien = nVien.xepLoai();
+  //   //B4: Lấy cái loai của phần tử đó ra so sánh với lại text mà user họ nhập vào bằng includes(), trả về true là tìm thấy
+  //   var kiem = mangTimKiem.includes(nVien.gioLam);
+  // }
+  // //B5: Nếu trả về true, push vào mangtimKiem
+  // mangTimKiem.push(kiem);
+  // //B6: Gán mảng dSNhanVien bằng mangTimKiem
+  // dSNhanVien = mangTimKiem;
+
+  //B2: Tìm vị trí ~ indexOf
+  // var viTri = findIndex(function(item){
+  //   return item.chucVu == id;
+  // })
+  
+  // if(tim != null){
+  //     tim.value;
+  //     var items = document.querySelectorAll('#tableDanhSach');
+  //     for(i=0; i<items.length; i++){
+  //         items[i].getElementsByClassName('td');
+  //     }
+  // }

@@ -1,0 +1,40 @@
+var kq = kiemTraNhap('tknv','tbTKNV',0);
+    if(kq){
+      kiemTraDoDai(nhanVien.taiKhoan,"tbTKNV",4,6,9);
+    }
+var kq1 = kiemTraNhap("name","tbTen",1);
+if(kq1){
+  kiemTraTenLaChu();
+}
+var kq2 = kiemTraNhap("email","tbEmail",2);
+if(kq2){
+  kiemTraEmail(nhanVien.email);
+}
+kq3 = kiemTraNhap("password","tbMatKhau",3);
+if(kq3){
+  kiemTraDoDai(nhanVien.passWord,"tbMatKhau",6,10,10);
+}
+var kq4 =  kiemTraNhap("datepicker","tbNgayy",4);
+var kq5 = kiemTraNhap("luongCB","tbLuongCB",5);
+var kq6 = kiemTraNhap("chucvu","tbChucVu",6);
+if(kq6){
+  kiemTraChucVu();
+}
+var kq7 = kiemTraNhap("gioLam","tbGiolam",7);
+var kq8 = kq1 & kq2 & kq3 & kq4 & kq5 & kq6 & kq7;
+
+//HÀM NÀY ĐI KIỂM TRA THỨ 1 LÀ KHÔNG ĐƯỢC ĐỂ TRỐNG, THỨ 2 LÀ KHÔNG ĐƯỢC TRÙNG VỚI THÔNG SỐ BÊN DƯỚI
+    //1. ĐI KIỂM TRA MÃ DỰA VÀO VỊ TRÍ, DÙNG FINDINDEX
+  var viTri = dSNhanVien.findIndex(function(item){
+    return item.taiKhoan == id && item.name == id && item.pass;
+  });
+  //2. DÙNG IF KIỂM TRA
+  // viTri == -1 (-1 là không tìm thấy)
+  // viTri != -1 (khác là ngược lại là tìm thấy)
+  if(viTri == -1){
+    domID(idThongBao).innerHTML ="";
+    return true; 
+  }
+    domID(idThongBao).innerHTML = mangThongBao[indexChuoiTB];
+    return false;
+
