@@ -19,7 +19,8 @@ for(i =0; i< dSNhanVien.length; i++){
     <td>${nVien.xepLoai()}</td>
     <td>
     <button class="btn btn-danger" onclick ="xoaNhanVien('${nVien.taiKhoan}')">Xoá</button>
-    <button class="btn btn-warning" onclick ="suaNhanVien('${nVien.taiKhoan}')">Sửa</button>
+    <button class="btn btn-warning" data-toggle="modal"
+    data-target="#myModal" onclick ="suaNhanVien('${nVien.taiKhoan}')">Sửa</button>
     </td>
     </tr>
     </table>`

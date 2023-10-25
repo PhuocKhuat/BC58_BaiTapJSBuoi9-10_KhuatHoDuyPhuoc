@@ -224,12 +224,14 @@ var btnCapNhat = domID('btnCapNhat').onclick = function(){ //9 BƯỚC (CÓ VALI
   });
    //B3: Tạo object tương ứng
    var nhanVien = new NhanVien(_taiKhoan, _name, _email, _password, _ngayLam, _luongCB, _chucVu, _gioLam);
+   //B5: Lấy vị trí trong ds Nhân viên
+   dSNhanVien[viTri] = nhanVien;
    //B4.VALIDATION:
    var kq = kiemTraNhap('tknv','tbTKNV',0) & kiemTraNhap("name","tbTen",1) & kiemTraNhap("email","tbEmail",2) & kiemTraNhap("password","tbMatKhau",3) & kiemTraNhap("datepicker","tbNgayy",4) & kiemTraNhap("luongCB","tbLuongCB",5) & kiemTraChucVu() & kiemTraNhap("gioLam","tbGiolam",7);
-   kq = kq && kiemTraDoDai(nhanVien.taiKhoan,"tbTKNV",4,6,9) & kiemTraTenLaChu() & kiemTraEmail(nhanVien.email, 11) & kiemTraMatKhau(nhanVien.passWord, 12) & kiemTraSo(nhanVien.luongCB, "tbLuongCB", 13) & kiemTraSo(nhanVien.gioLam, "tbGiolam", 13) & kiemTraNTN(14);
+   kq = kq && kiemTraDoDai(nhanVien.taiKhoan,"tbTKNV",4,6,9) & kiemTraTenLaChu() & kiemTraEmail(nhanVien.email, 11) & kiemTraSo(nhanVien.luongCB, "tbLuongCB", 13) & kiemTraSo(nhanVien.gioLam, "tbGiolam", 13) & kiemTraNTN(14);
+   
    if(kq){
-     //B5: Lấy vị trí trong ds Nhân viên
-   dSNhanVien[viTri] = nhanVien;
+     
    //B6: Xoá dựa theo vị trí trong dSNhanVien
    dSNhanVien.splice(viTri, 1, nhanVien);
    //B7: Chuyển array thành JSON
@@ -240,7 +242,7 @@ var btnCapNhat = domID('btnCapNhat').onclick = function(){ //9 BƯỚC (CÓ VALI
    renderdSNhanVien(dSNhanVien);
    };
 }
-//TÌM NHÂN VIÊN THEO LOẠI(xuất săc, giỏi, khá...) VÀ HIỂN THỊ
+//TÌM NHÂN VIÊN THEO LOẠI(xuất săc, giỏi, khá...) VÀ HIỂN THỊ ~ 10 BƯỚC
 /**
  * B1. Khởi tạo các biến sẽ sử dụng.
  * B2. dom tới ô input lấy giá trị người dùng.
@@ -248,7 +250,7 @@ var btnCapNhat = domID('btnCapNhat').onclick = function(){ //9 BƯỚC (CÓ VALI
  * B4. dom tới tên thẻ table trong toàn văn bản.
  * B5. dom tới tên thẻ tr trong toàn văn bản.
  * B6. Tạo vòng lặp for.
- * B7. dom tới thẻ td thứ 6 theo vị trí thứ i của thẻ tr.
+ * B7. dom tới tên thẻ td thứ 6 trong vị trí thứ i của thẻ tr.
  * B8. Nếu đúng là td.
  * B9. Lấy giá trị văn bản của phần tử td hiện tại.
  * B10. Nếu giá trị chữ hoa của txtValue tìm được vị trí chuỗi filter > -1, thì style = block, ngược lại style = none.
