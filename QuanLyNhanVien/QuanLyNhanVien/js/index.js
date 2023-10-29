@@ -256,39 +256,51 @@ var btnCapNhat = domID('btnCapNhat').onclick = function(){ //9 BƯỚC (CÓ VALI
  * B10. Nếu giá trị chữ hoa của txtValue tìm được vị trí chuỗi filter > -1, thì style = block, ngược lại style = none.
  */
 
-var btnTimNV = domID('btnTimNV').onclick = function(){
-  //B1. Khởi tạo các biến sẽ sử dụng.
-  var tim, filter, table, tr, td, txtValue ;
-  //B2. dom tới input lấy giá trị người dùng.
-  tim = domID('searchName');
-  //B3. Gán giá trị của tim thành chữ HOA.
-  filter = tim.value.toUpperCase();
-  //B4. dom tới tên thẻ table trong toàn văn bản. 
-  table = document.getElementsByTagName('table');
-  //B5. dom tới tên thẻ tr trong toàn văn bản. 
-  tr = document.getElementsByTagName('tr');
-  // td = document.getElementsByTagName("td");
-  //B6. Tạo vòng lặp for.
-  for(i=0; i< tr.length; i++){
-    //B7. dom tới thẻ td thứ 6 theo vị trí thứ i của thẻ tr. 
-    td = tr[i].getElementsByTagName("td")[6];
-    //toUpperCase: khi nhập chữ hoa hoặc thường sẽ gợi ý các từ có chữ a dù ở đầu hoặc cuối.
-    //Sử dụng phương thức indexOf() của lớp String để tìm vị trí của chuỗi filter trong giá trị của biến txtValue đã chuyển đổi.
-    //So sánh vị trí tìm được với giá trị -1.
-    //B8. Nếu đúng là td.
-    if(td) {
-      //B9. Lấy giá trị văn bản của phần tử td hiện tại.
-      txtValue = td.textContent || td.innerText;
-      //B10. Nếu giá trị chữ hoa txtValue tìm được vị trí chuỗi filter > -1, thì style = block, ngược lại style = none.
-      if(txtValue.toUpperCase().indexOf(filter) > -1){
-          tr[i].style.display = "block";
-        } else {
-          tr[i].style.display = "none";
-        }
-  }
-}
-}
+// var btnTimNV = domID('btnTimNV').onclick = function(){
+//   //B1. Khởi tạo các biến sẽ sử dụng.
+//   var tim, filter, table, tr, td, txtValue ;
+//   //B2. dom tới input lấy giá trị người dùng.
+//   tim = domID('searchName');
+//   //B3. Gán giá trị của tim thành chữ HOA.
+//   filter = tim.value.toUpperCase();
+//   //B4. dom tới tên thẻ table trong toàn văn bản. 
+//   table = document.getElementsByTagName('table');
+//   //B5. dom tới tên thẻ tr trong toàn văn bản. 
+//   tr = document.getElementsByTagName('tr');
+//   // td = document.getElementsByTagName("td");
+//   //B6. Tạo vòng lặp for.
+//   for(i=0; i< tr.length; i++){
+//     //B7. dom tới thẻ td thứ 6 theo vị trí thứ i của thẻ tr. 
+//     td = tr[i].getElementsByTagName("td")[6];
+//     //toUpperCase: khi nhập chữ hoa hoặc thường sẽ gợi ý các từ có chữ a dù ở đầu hoặc cuối.
+//     //Sử dụng phương thức indexOf() của lớp String để tìm vị trí của chuỗi filter trong giá trị của biến txtValue đã chuyển đổi.
+//     //So sánh vị trí tìm được với giá trị -1.
+//     //B8. Nếu đúng là td.
+//     if(td) {
+//       //B9. Lấy giá trị văn bản của phần tử td hiện tại.
+//       txtValue = td.textContent || td.innerText;
+//       //B10. Nếu giá trị chữ hoa txtValue tìm được vị trí chuỗi filter > -1, thì style = block, ngược lại style = none.
+//       if(txtValue.toUpperCase().indexOf(filter) > -1){
+//           tr[i].style.display = "block";
+//         } else {
+//           tr[i].style.display = "none";
+//         }
+//   }
+// }
+// }
 
+/**
+ * B1. dom tới nút tìm kiếm trên layout, gán thêm thành chữ thường.
+ * B2. Khởi tạo biến và lọc những phần tử từ dSNV trả về những phần tử thuộc xếp loại, chữ thường, kiểm tra keySearch có tồn tại không.
+ * B3. renderdSNhanVien có tham số là kQTKiem.
+ */
+document.getElementById("btnTimNV").onclick = function search(){
+  var keySearch = document.getElementById("searchName").value.toLowerCase();
+  var kQTKiem = dSNhanVien.filter(function(item){
+    return item.xepLoai().toLowerCase().includes(keySearch);
+  })
+  renderdSNhanVien(kQTKiem);
+}
 function domID(id){
     return document.getElementById(id);
 }
