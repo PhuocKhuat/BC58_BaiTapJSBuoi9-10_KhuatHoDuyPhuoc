@@ -289,6 +289,7 @@ var btnCapNhat = domID('btnCapNhat').onclick = function(){ //9 BƯỚC (CÓ VALI
 // }
 // }
 
+//TÌM NHÂN VIÊN DỰA THEO LOẠI.
 /**
  * B1. dom tới nút tìm kiếm trên layout, gán thêm thành chữ thường.
  * B2. Khởi tạo biến và lọc những phần tử từ dSNV trả về những phần tử thuộc xếp loại, chữ thường, kiểm tra keySearch có tồn tại không.

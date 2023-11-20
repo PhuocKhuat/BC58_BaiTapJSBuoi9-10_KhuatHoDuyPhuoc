@@ -29,3 +29,4 @@ for(i =0; i< dSNhanVien.length; i++){
 //B6: dom tới kết quả cần hiện lên layout.
 domID('tableDanhSach').innerHTML = contentHTML;
 }
+
