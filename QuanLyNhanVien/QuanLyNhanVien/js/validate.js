@@ -1,7 +1,7 @@
 //TẠO HÀM KIỂM TRA CHỨ CHƯA KIỂM TRA
 //KIỂM TRA Ở BÊN JS
-//KIỂM TRA TẤT CẢ KHÔNG ĐƯỢC ĐỂ TRỐNG
 var mangThongBao = ["Vui lòng nhập tài khoản", "Vui lòng nhập họ tên", "Vui lòng nhập email", "Vui lòng nhập mật khẩu", "Vui lòng nhập ngày làm", "Vui lòng nhập lương", "Vui lòng nhập chức vụ", "Vui lòng nhập giờ làm", "Vui lòng nhập họ và tên là chữ cái", "Vui lòng nhập tài khoản từ 4 đến 6 kí tự", "Vui lòng nhập mật khẩu từ 6 đến 10 kí tự", "Email hợp lệ phải là name@domainName.com", "Mật khẩu chứa từ 6 đến 10 kí tự, 1 số, 1 chữ hoa, 1 chữ thường, 1 kí tự đặc biệt", "Vui lòng nhập số", "Kiểm tra định dạng tháng/ ngày/ năm"];
+//KIỂM TRA TẤT CẢ KHÔNG ĐƯỢC ĐỂ TRỐNG
 function kiemTraNhap(idField, idThongBao, indexChuoiTB){
     //dom tới bộ idField.
     var field = domID(idField).value; 
